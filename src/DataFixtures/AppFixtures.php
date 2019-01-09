@@ -16,12 +16,18 @@ class AppFixtures extends Fixture
     private $passwordEncoder;
 
     /**
+     * @var Faker\Factory
+     */
+    private $faker;
+
+    /**
      * AppFixtures constructor.
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->faker = Faker\Factory::create();
     }
 
     public function load(ObjectManager $manager)
