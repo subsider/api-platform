@@ -2,7 +2,6 @@
 
 namespace App\Serializer;
 
-use ApiPlatform\Core\Exception\RuntimeException;
 use ApiPlatform\Core\Serializer\SerializerContextBuilderInterface;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
