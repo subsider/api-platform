@@ -173,13 +173,25 @@ class User implements UserInterface
     private $passwordChangeDate;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
+    /**
+     * @ORM\Column(type="string", length=40, nullable=true)
+     */
+    private $confirmationToken;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
-        $this->posts    = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-        $this->roles    = self::DEFAULT_ROLES;
+        $this->posts             = new ArrayCollection();
+        $this->comments          = new ArrayCollection();
+        $this->roles             = self::DEFAULT_ROLES;
+        $this->enabled           = false;
+        $this->confirmationToken = null;
     }
 
     public function getId(): ?int
@@ -383,7 +395,7 @@ class User implements UserInterface
     /**
      * @return int|null
      */
-    public function getPasswordChangeDate(): ?integer
+    public function getPasswordChangeDate(): ?int
     {
         return $this->passwordChangeDate;
     }
@@ -398,4 +410,44 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function getEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool $enabled
+     * @return User
+     */
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * @param string $confirmationToken
+     * @return User
+     */
+    public function setConfirmationToken(string $confirmationToken): self
+    {
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+
 }
