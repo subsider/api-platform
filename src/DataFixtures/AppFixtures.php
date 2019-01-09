@@ -61,14 +61,13 @@ class AppFixtures extends Fixture
 
     public function loadComments(ObjectManager $manager)
     {
-        $user = $this->getReference('user_admin');
-
         for ($i = 0; $i < 100; $i++) {
             for ($j = 0; $j < rand(1, 10); $j++) {
                 $comment = new Comment();
                 $comment->setPublished($this->faker->dateTimeThisYear);
                 $comment->setContent($this->faker->realText());
-                $comment->setAuthor($user);
+                $comment->setAuthor($this->getReference('user_admin'));
+                $comment->setBlogPost($this->getReference("blog_post_{$i}"));
 
                 $manager->persist($comment);
             }
