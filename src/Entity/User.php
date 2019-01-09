@@ -53,7 +53,7 @@ class User implements UserInterface
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
 
-    const DEFAULT_ROLES = self::DEFAULT_ROLES;
+    const DEFAULT_ROLES = [self::ROLE_COMMENTATOR];
 
     /**
      * @ORM\Id()
