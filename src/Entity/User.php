@@ -22,6 +22,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          },
  *          "put"={
  *              "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
+ *              "normalization_context"={
+ *                  "groups"={"get"}
+ *              },
  *              "denormalization_context"={
  *                  "groups"={"put"}
  *              }
@@ -29,6 +32,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     collectionOperations={
  *          "post"={
+ *              "normalization_context"={
+ *                  "groups"={"get"}
+ *              },
  *              "denormalization_context"={
  *                  "groups"={"post"}
  *              }
