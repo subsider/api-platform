@@ -18,6 +18,16 @@ class AppFixtures extends Fixture
         $blogPost->setAuthor('Piotr Jura');
 
         $manager->persist($blogPost);
+
+        $blogPost = new BlogPost();
+        $blogPost->setTitle('A second blog post!');
+        $blogPost->setSlug('a-second-blog-post');
+        $blogPost->setPublished(new \DateTime('2018-01-09 12:00:00'));
+        $blogPost->setContent('Content of the blog post');
+        $blogPost->setAuthor('Carlos Cruz');
+
+        $manager->persist($blogPost);
+
         $manager->flush();
     }
 }
