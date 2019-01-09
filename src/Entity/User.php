@@ -115,7 +115,7 @@ class User implements UserInterface
 
     /**
      * @Groups({"put-reset-password"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"put-reset-password"})
      * @Assert\Regex(
      *     pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
      *     message="Password must be seven characters long and contain at least one digit, one upper case letter and one lower case letter"
@@ -129,14 +129,14 @@ class User implements UserInterface
      *     "this.getNewPassword() === this.getNewRetypedPassword()",
      *     message="Passwords do not match"
      * )
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"put-reset-password"})
      */
     private $newRetypedPassword;
 
     /**
      * @Groups({"put-reset-password"})
-     * @Assert\NotBlank()
-     * @UserPassword()
+     * @Assert\NotBlank(groups={"put-reset-password"})
+     * @UserPassword(groups={"put-reset-password"})
      */
     private $oldPassword;
 
@@ -439,10 +439,10 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $confirmationToken
+     * @param $confirmationToken
      * @return User
      */
-    public function setConfirmationToken(string $confirmationToken): self
+    public function setConfirmationToken($confirmationToken): self
     {
         $this->confirmationToken = $confirmationToken;
 
