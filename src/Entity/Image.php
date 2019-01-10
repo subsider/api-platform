@@ -33,8 +33,8 @@ class Image
     private $id;
 
     /**
-     * @Vich\UploadableField(mapping="images")
-     * @Assert\NotBlank()
+     * @Vich\UploadableField(mapping="images", fileNameProperty="url")
+     * @Assert\NotNull()
      */
     private $file;
 
@@ -72,7 +72,7 @@ class Image
      */
     public function getUrl()
     {
-        return $this->url;
+        return '/images/' . $this->url;
     }
 
     /**
