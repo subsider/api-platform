@@ -3,13 +3,25 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\UploadImageAction;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity()
  * @Vich\Uploadable()
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "method"="POST",
+ *              "path"="/images",
+ *              "controller"=UploadImageAction::class,
+ *              "defaults"={"api_receive"=false}
+ *          }
+ *     }
+ * )
  */
 class Image
 {
@@ -22,6 +34,7 @@ class Image
 
     /**
      * @Vich\UploadableField(mapping="images")
+     * @Assert\NotBlank()
      */
     private $file;
 
