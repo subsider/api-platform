@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity()
  * @Vich\Uploadable()
  * @ApiResource(
- *     attributes={"order"={"id": "ASC"}}
+ *     attributes={"order"={"id": "ASC"}},
  *     collectionOperations={
  *          "get",
  *          "post"={
