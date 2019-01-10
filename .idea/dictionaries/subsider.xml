@@ -6,6 +6,7 @@
       <w>nullable</w>
       <w>subresource</w>
       <w>superadmin</w>
+      <w>uploadable</w>
     </words>
   </dictionary>
 </component>
