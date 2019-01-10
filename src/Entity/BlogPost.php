@@ -6,6 +6,8 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -29,6 +31,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     properties={
  *          "published"
  *     }
+ * )
+ * @ApiFilter(RangeFilter::class, properties={"id"})
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={
+ *          "id",
+ *          "published",
+ *          "title"
+ *     },
+ *     arguments={"orderParameterName"="order"}
  * )
  * @ApiResource(
  *     itemOperations={
