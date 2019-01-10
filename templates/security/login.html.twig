@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ path('security_login') }}" method="POST">
+                        <div>
+                            <div class="form-group">
+                                <label for="username" class="form-control-label required">Username</label>
+                                <input type="text" class="form-control" id="username" name="_username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-control-label required">Password</label>
+                                <input type="password" class="form-control" id="password" name="_password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="login" name="login" class="btn btn-secondary">Login</button>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
